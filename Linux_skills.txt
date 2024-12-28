@@ -1,0 +1,160 @@
+Here’s a categorized list of essential Linux commands based on the above DevOps skills:
+
+---
+
+### **1. User and File Management**
+#### **File and Directory Management**
+- **Create files**:  
+  `touch <filename>`
+- **Create directories**:  
+  `mkdir <dirname>`
+- **Remove files**:  
+  `rm <filename>`  
+- **Remove directories**:  
+  `rm -r <dirname>`
+- **Copy files**:  
+  `cp <source> <destination>`
+- **Move/Rename files**:  
+  `mv <source> <destination>`
+- **View file content**:  
+  `cat <filename>`  
+  `less <filename>`  
+  `tail -f <filename>` (For live logs)
+- **Find files**:  
+  `find /path -name <filename>`
+
+#### **Permission Management**
+- **View permissions**:  
+  `ls -l`
+- **Change permissions**:  
+  `chmod <permissions> <filename>`  
+  (e.g., `chmod 755 file.sh`)
+- **Change owner**:  
+  `chown <user>:<group> <filename>`  
+  (e.g., `chown john:developers file.sh`)
+
+#### **User and Group Management**
+- **Add user**:  
+  `useradd <username>`  
+  `passwd <username>` (Set password)
+- **Delete user**:  
+  `userdel <username>`
+- **Create group**:  
+  `groupadd <groupname>`
+- **Add user to group**:  
+  `usermod -aG <groupname> <username>`
+- **List groups**:  
+  `groups <username>`
+
+---
+
+### **2. Command-Line Proficiency**
+#### **File System Commands**
+- **List files and directories**:  
+  `ls -l` (Detailed)  
+  `ls -a` (Including hidden files)
+- **Change directory**:  
+  `cd <directory>`
+- **Disk usage**:  
+  `df -h` (Disk space)  
+  `du -h <path>` (Size of a directory)
+- **Create tar archives**:  
+  `tar -cvf archive.tar <files>`  
+  `tar -xvf archive.tar` (Extract files)
+- **Package management**:
+  - RPM: `rpm -ivh <package>.rpm` (Install), `rpm -e <package>` (Uninstall)
+  - Yum/DNF: `yum install <package>`, `yum update`, `yum remove <package>`
+
+#### **Process and Resource Management**
+- **View running processes**:  
+  `ps aux`  
+  `top`  
+  `htop`
+- **Kill a process**:  
+  `kill <PID>`  
+  `kill -9 <PID>` (Forcefully)
+- **System uptime**:  
+  `uptime`
+
+---
+
+### **3. Network Operations and SSH**
+#### **SSH and File Transfer**
+- **SSH into a server**:  
+  `ssh <user>@<hostname>`
+- **Copy files using SCP**:  
+  `scp <local_file> <user>@<remote_host>:<remote_path>`
+- **Passwordless authentication**:
+  - Generate a key: `ssh-keygen`
+  - Copy key to remote: `ssh-copy-id <user>@<hostname>`
+- **File transfer using WinSCP**:  
+  GUI-based tool, no command required.
+
+#### **Network Commands**
+- **Check connectivity**:  
+  `ping <hostname>`
+- **Download files**:  
+  `wget <URL>`
+- **Check active connections**:  
+  `netstat -tuln`  
+  `ss -tuln`
+
+---
+
+### **4. Task Automation and Scheduling**
+#### **Crontab**
+- **Edit crontab**:  
+  `crontab -e`
+- **List cron jobs**:  
+  `crontab -l`
+- **Schedule a job**:  
+  Syntax: `* * * * * <command>`
+  (e.g., `0 2 * * * /path/to/backup.sh` to run daily at 2 AM)
+
+#### **Shell Scripting**
+- **Create a script**:  
+  Use `vim script.sh` or `nano script.sh`, then add:
+  ```bash
+  #!/bin/bash
+  echo "Hello, world!"
+  ```
+- **Make it executable**:  
+  `chmod +x script.sh`
+- **Run the script**:  
+  `./script.sh`
+
+---
+
+### **5. Service Management**
+- **Start a service**:  
+  `systemctl start <service>`
+- **Stop a service**:  
+  `systemctl stop <service>`
+- **Restart a service**:  
+  `systemctl restart <service>`
+- **Check status**:  
+  `systemctl status <service>`
+- **Enable service at boot**:  
+  `systemctl enable <service>`
+- **Disable service**:  
+  `systemctl disable <service>`
+
+---
+
+### **6. Bonus Useful Commands**
+- **Edit files**:  
+  `vim <filename>`  
+  `nano <filename>`
+- **Check system information**:  
+  `uname -a`  
+  `hostnamectl`
+- **Extract zip/tar.gz**:  
+  `tar -xvf <file>.tar.gz`  
+  `unzip <file>.zip`
+- **Check disk usage**:  
+  `du -sh <directory>`  
+  `df -h`
+
+---
+
+By mastering these commands, you'll have a strong foundation for handling DevOps-related tasks on Linux systems!

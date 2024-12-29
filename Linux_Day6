@@ -1,0 +1,229 @@
+Below is a detailed explanation of the commands and concepts mentioned in your request, along with practical examples, use cases, and potential interview questions:
+
+---
+
+## **1. ps Command**
+The `ps` command shows the processes running on a Linux system.
+
+### **Why Use `ps`?**
+- To monitor and manage running processes.
+- To identify processes consuming excessive resources.
+- To troubleshoot issues with applications.
+
+### **Common Options:**
+- `ps -ef`: Displays all processes running on the system in a detailed format.
+- `ps -ef | grep <name>`: Filters the output to show only processes matching `<name>`.
+
+### **Example:**
+```bash
+ps -ef | grep tomcat
+```
+- **Use Case**: Check if a Tomcat server is running on the system and retrieve its Process ID (PID).
+
+### **Interview Question:**
+- How can you find and kill a specific process using `ps` and `kill`?
+
+---
+
+## **2. Networking Commands**
+
+### **PING**:
+- **What**: Tests connectivity to a remote server.
+- **Use Case**: Verify if a server is reachable.
+- **Example**:
+  ```bash
+  ping www.google.com
+  ```
+
+### **TELNET**:
+- **What**: Tests connectivity to a specific port on a remote server.
+- **Use Case**: Debug network or application-level connectivity issues.
+- **Example**:
+  ```bash
+  telnet www.google.com 443
+  telnet 100.26.144.255 8080
+  ```
+
+### **NETSTAT**:
+- **What**: Displays network connections, routing tables, and port usage.
+- **Options**:
+  - `netstat -an`: Shows all active connections and listening ports.
+  - `netstat -an | grep 8080`: Filters results to show only port 8080.
+
+### **Interview Question:**
+- How would you debug a situation where a port is not responding?
+
+---
+
+## **3. Monitoring & Performance**
+
+### **Commands**:
+- `top`: Displays real-time system performance (CPU/memory usage).
+- `htop`: A more user-friendly version of `top`.
+- `iostat`: Shows CPU, I/O, and device utilization statistics.
+- `free -g`: Displays available/free memory in GB.
+
+### **Use Case**:
+Monitor system health and identify bottlenecks.
+
+### **Example**:
+```bash
+top
+htop
+iostat
+```
+
+### **Interview Question:**
+- What tools would you use to monitor CPU or memory usage on a Linux server?
+
+---
+
+## **4. INODE**
+- **What**: Metadata structure in Linux that contains information about a file (e.g., permissions, size, timestamps, and data blocks).
+- **Use Case**:
+  - Diagnose filesystem issues (e.g., "No space left on device" even when disk space is available could mean the inode limit is reached).
+
+### **Interview Question:**
+- What happens if a filesystem runs out of inodes, and how would you resolve it?
+
+---
+
+## **5. Soft Link vs Hard Link**
+
+### **Hard Link**:
+- **What**: Creates a direct pointer to a file.
+- **Characteristics**:
+  - Shares the same inode as the original file.
+  - File remains accessible even if the original is deleted.
+- **Example**:
+  ```bash
+  ln /path/to/target/file /path/to/hardlink
+  ```
+
+### **Soft Link**:
+- **What**: Creates a symbolic reference (shortcut) to a file.
+- **Characteristics**:
+  - Points to the file's pathname, not the inode.
+  - Breaks if the original file is deleted.
+- **Example**:
+  ```bash
+  ln -s /path/to/target/file /path/to/link
+  ```
+
+### **Use Case**:
+Soft links are commonly used for configuration files or shortcuts.
+
+### **Interview Question**:
+- What is the difference between a hard link and a soft link, and when would you use each?
+
+---
+
+## **6. cURL vs wget**
+
+### **cURL**:
+- **What**: A command-line tool for making HTTP requests.
+- **Use Case**: Interact with APIs, download files, or test server responses.
+- **Examples**:
+  - Download a file:
+    ```bash
+    curl -O https://example.com/file.zip
+    ```
+  - Send a POST request:
+    ```bash
+    curl -X POST -d "username=user&password=pass" https://api.example.com/login
+    ```
+
+### **wget**:
+- **What**: A simpler tool for downloading files.
+- **Use Case**: Automated downloads or mirroring websites.
+- **Example**:
+  ```bash
+  wget https://example.com/file.zip
+  ```
+
+### **Interview Question**:
+- Compare cURL and wget. When would you use one over the other?
+
+---
+
+## **7. Disk Management Commands**
+
+### **df**:
+- **What**: Displays filesystem disk space usage.
+- **Options**:
+  - `df -h`: Human-readable format.
+  - `df -m`: Displays usage in MB.
+
+### **du**:
+- **What**: Shows the size of files and directories.
+- **Options**:
+  - `du -sh`: Summary of total space used by a directory.
+  - `du -h`: Human-readable format.
+
+### **Example**:
+```bash
+du -sh /var/log
+```
+
+### **Interview Question**:
+- How would you find which directories are using the most disk space?
+
+---
+
+## **8. chmod and chown**
+
+### **chmod**:
+- **What**: Modifies file permissions.
+- **Numeric Example**:
+  ```bash
+  chmod 755 file
+  ```
+  - Owner: Read, write, execute (7).
+  - Group: Read, execute (5).
+  - Others: Read, execute (5).
+
+- **Symbolic Example**:
+  ```bash
+  chmod u+x file
+  ```
+  - Adds execute permission for the owner.
+
+### **chown**:
+- **What**: Changes ownership of a file or directory.
+- **Example**:
+  ```bash
+  chown user:group file
+  chown -R user:group /directory
+  ```
+
+### **Interview Question**:
+- What is the difference between `chmod` and `chown`, and when would you use them?
+
+---
+
+## **9. History Command**
+- **What**: Displays the command history of the current session.
+- **Options**:
+  - `history`: Shows the entire history.
+  - `!<number>`: Re-runs a specific command.
+- **Example**:
+  ```bash
+  history
+  !50  # Executes the 50th command in history
+  ```
+
+### **Interview Question**:
+- How can you re-run a previously executed command using `history`?
+
+---
+
+### **General Interview Questions Across These Topics**:
+1. How can you find and terminate a specific process in Linux?
+2. What’s the difference between `df` and `du`, and when would you use each?
+3. How do you troubleshoot a service that’s not responding on a specific port?
+4. What tools do you use to monitor system performance in real time?
+5. Explain the difference between `wget` and `curl` with examples.
+
+---
+
+Let me know if you'd like more details or examples!

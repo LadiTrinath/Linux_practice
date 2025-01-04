@@ -1,0 +1,149 @@
+### **Dividing Content into Technical Question Categories**
+
+---
+
+### **1. DevOps Concepts**
+
+#### **Shell Scripting Basics**
+- What is a shell script, and why is it used?  
+  *A shell script automates repetitive tasks by executing shell commands in sequence.*
+
+- What is the difference between `$@` and `$*` in shell scripting?  
+  *Both represent all script arguments, but `$@` treats each argument as a separate entity, while `$*` treats them as a single entity.*
+
+- What is the purpose of the shebang (`#!/bin/bash`) in a script?  
+  *The shebang specifies the interpreter to execute the script.*
+
+- Explain the types of variables in shell scripting: local, environment, and shell variables.  
+  *Local: Accessible only within the script/function; Environment: System-wide; Shell: Defined in the current session.*
+
+- What are conditional expressions, and how are they used in shell scripting?  
+  *Conditional expressions evaluate conditions using `if`, `elif`, `else` blocks to control the flow.*
+
+#### **Operators**
+- What are the basic arithmetic operators in shell scripting?  
+  *Addition (`+`), Subtraction (`-`), Multiplication (`*`), Division (`/`), and Modulus (`%`).*
+
+- Explain the relational operators used for comparison in shell scripting.  
+  *Examples: `-eq` (equal), `-ne` (not equal), `-gt` (greater than), `-lt` (less than).*
+
+- What are string comparison operators?  
+  *Examples: `=` (equal), `!=` (not equal), `-z` (empty string), `-n` (non-empty string).*
+
+#### **File Testing**
+- How can you check if a file exists in a script?  
+  *Using `-e` operator, e.g., `if [ -e file.txt ]; then echo "File exists"; fi`.*
+
+- How do you check if a directory exists?  
+  *Using `-d`, e.g., `if [ -d directory ]; then echo "Directory exists"; fi`.*
+
+---
+
+### **2. Tools and Practices**
+
+#### **Jenkins**
+- Write a script to install and start Jenkins on a server.  
+  ```bash
+  #!/bin/bash 
+  sudo yum update –y
+  sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+  sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+  sudo dnf install java-17-amazon-corretto -y
+  sudo yum install jenkins -y
+  sudo systemctl enable jenkins
+  sudo systemctl start jenkins
+  ```
+
+#### **Tomcat**
+- Write a script to set up and start a Tomcat server.  
+  ```bash
+  yum install java -y
+  cd /opt
+  wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.98/bin/apache-tomcat-9.0.98.tar.gz
+  tar -xvf apache-tomcat-9.0.98.tar.gz
+  ./apache-tomcat-9.0.98/bin/startup.sh
+  ```
+
+#### **Debugging**
+- What does `set -x` and `set -e` do in a script?  
+  *`set -x`: Prints each command before execution.  
+  `set -e`: Stops the script if any command fails.*
+
+#### **Boolean Logic**
+- How do you use boolean operators in shell scripting?  
+  *Example: `if [ $a -lt $b ] && [ $b -lt $c ]; then echo "Conditions met"; fi`.*
+
+---
+
+### **3. Hands-On Scenarios**
+
+#### **Variable Handling**
+- Write a script to unset a variable and verify its value.  
+  ```bash
+  name="Madhu Kiran"
+  echo $name
+  unset name
+  echo $name  # Output will be empty
+  ```
+
+#### **Arithmetic**
+- Write a script to calculate the sum of two numbers entered by the user.  
+  ```bash
+  echo "Enter the first number:"
+  read num1
+  echo "Enter the second number:"
+  read num2
+  sum=$((num1 + num2))
+  echo "Sum is: $sum"
+  ```
+
+#### **String Comparisons**
+- Write a script to compare two strings and check if one is empty.  
+  ```bash
+  str1="hello"
+  str2=""
+  if [ -z "$str2" ]; then
+    echo "str2 is empty"
+  else
+    echo "str2 is not empty"
+  fi
+  ```
+
+#### **File Testing**
+- Write a script to check if a file is readable.  
+  ```bash
+  if [ -r file.txt ]; then
+    echo "file.txt is readable"
+  else
+    echo "file.txt is not readable"
+  fi
+  ```
+
+---
+
+### **4. Problem Scenarios**
+
+#### **Error Handling**
+- What happens if you try to access an unset variable in a script?  
+  *The script returns an empty value or defaults based on the shell settings.*
+
+- How do you debug a script that isn’t executing commands correctly?  
+  *Enable debugging with `set -x` to trace command execution.*
+
+#### **Conditional Errors**
+- If a user inputs invalid data in a script, how do you handle it?  
+  *Validate inputs using conditional checks and exit with an error message if invalid.*
+
+#### **File Operations**
+- What if a script attempts to create a directory that already exists?  
+  *Check if the directory exists using `if [ -d dir ]; then echo "Exists"; else mkdir dir; fi`.*
+
+---
+
+### **Practical Examples for Classification**
+| **Question**                                               | **Category**             |
+|------------------------------------------------------------|--------------------------|
+| Write a script to compare two strings.                     | Hands-On Scenario        |
+| What happens if you use an undefined variable?             | Problem Scenario         |
+| How do you install Jenkins using a shell script?           | Tools and Practices      |
+| What is the difference between `-e` and `-f` in file testing? | DevOps Concepts         |
